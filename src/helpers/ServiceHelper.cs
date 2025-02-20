@@ -1,5 +1,6 @@
 using Pannella.Models.Events;
 using Pannella.Services;
+using System.IO;
 
 namespace Pannella.Helpers;
 
@@ -34,7 +35,7 @@ public static class ServiceHelper
                 SettingsService.Config.crc_check,
                 SettingsService.Config.use_custom_archive,
                 SettingsService.Debug.show_stack_traces);
-            TempDirectory = SettingsService.Config.temp_directory ?? UpdateDirectory;
+            TempDirectory = SettingsService.Config.temp_directory ?? Path.GetTempPath();
             AssetsService = new AssetsService(
                 SettingsService.Config.use_local_blacklist,
                 SettingsService.Debug.show_stack_traces);
